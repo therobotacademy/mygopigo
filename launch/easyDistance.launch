@@ -1,0 +1,3 @@
+<launch>
+  <node name="easyDistance_sensor" pkg="mygopigo" type="easyDistance.py" output="screen" />
+</launch>
