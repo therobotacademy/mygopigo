@@ -32,6 +32,9 @@ def main():
         # Add timestamp
         msg_range.header.stamp = rospy.Time.now()
 
+        # Print current distance
+	print msg_range.range*1000," mm"
+	# Publish distance message
         pub_distance.publish(msg_range)
 
         rate.sleep()
