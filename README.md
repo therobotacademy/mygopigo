@@ -1,0 +1,1 @@
+This repository is the evolution of [gopigo3_node](https://github.com/ros-gopigo/gopigo3_node) for using easy libraries of GoPiGo3 and DI sensors within a ROS enviroment (from Python scripts)
