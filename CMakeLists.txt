@@ -7,7 +7,15 @@ project(mygopigo)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED
+  geometry_msgs
+  rospy
+  sensor_msgs
+  std_msgs
+  std_srvs
+  nav_msgs
+  message_generation
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -48,6 +56,11 @@ find_package(catkin REQUIRED)
 #   Message1.msg
 #   Message2.msg
 # )
+add_message_files(
+  FILES
+  MotorStatus.msg
+  MotorStatusLR.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -55,6 +68,10 @@ find_package(catkin REQUIRED)
 #   Service1.srv
 #   Service2.srv
 # )
+add_service_files(
+  FILES
+  SPI.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -68,6 +85,10 @@ find_package(catkin REQUIRED)
 #   DEPENDENCIES
 #   std_msgs  # Or other packages containing msgs
 # )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,6 +123,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES myGopigo
 #  CATKIN_DEPENDS other_catkin_pkg
+   CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -113,7 +135,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -159,6 +181,14 @@ include_directories(
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+
+install(PROGRAMS src/gopigo3_driver.py
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY launch
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
