@@ -56,7 +56,7 @@ find_package(catkin REQUIRED
 #   Message1.msg
 #   Message2.msg
 # )
-add_message_files(
+add_message_files(DIRECTORY msg
   FILES
   MotorStatus.msg
   MotorStatusLR.msg
