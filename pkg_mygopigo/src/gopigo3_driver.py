@@ -20,8 +20,8 @@ from geometry_msgs.msg import PoseWithCovariance, TwistWithCovariance
 from geometry_msgs.msg import TransformStamped
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import JointState
-from gopigo3_node.msg import MotorStatusLR, MotorStatus
-from gopigo3_node.srv import SPI, SPIResponse
+from mygopigo.msg import MotorStatusLR, MotorStatus
+from mygopigo.srv import SPI, SPIResponse
 from tf.transformations import quaternion_about_axis
 from tf.broadcaster import TransformBroadcaster
 import numpy as np
